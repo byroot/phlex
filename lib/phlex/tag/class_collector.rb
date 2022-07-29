@@ -9,10 +9,9 @@ module Phlex
       end
 
       define_method :__class__, ::Kernel.instance_method(:class)
-      define_method :__callee__, ::Kernel.instance_method(:__callee__)
 
       def __add_class__(content = nil, **attributes, &block)
-        @tag.classes = __callee__.name
+        @tag.classes = ::Kernel.__callee__.name
         @tag.attributes = attributes if attributes
 
         if ::Kernel.block_given?
